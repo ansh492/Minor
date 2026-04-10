@@ -1,4 +1,4 @@
-i import {
+import {
     fileStore,
     activeFile,
     mainFile,
