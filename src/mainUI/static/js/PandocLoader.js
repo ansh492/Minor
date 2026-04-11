@@ -9,8 +9,9 @@ function loadPandoc() {
         const { createPandocInstance } = await import("./core.js");
         const response = await fetch("./static/js/pandoc.wasm");
         const wasmBinary = await response.arrayBuffer();
-        const { convert, query } = await createPandocInstance(wasmBinary);
-        window.pandocModule = { convert, query };
+        const { convert, query, pandoc } =
+            await createPandocInstance(wasmBinary);
+        window.pandocModule = { convert, query, pandoc };
 
         const pandocVersion = await query({ query: "version" });
         const inputFormats = await query({ query: "input-formats" });

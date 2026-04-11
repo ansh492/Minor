@@ -7,7 +7,7 @@ const buttonOptions = ["Typst", "Markdown", "LaTeX", "HTML"];
 window.formatMap = {
     Typst: "typst",
     Markdown: "markdown",
-    LaTeX: "latex",
+    LaTeX: "latex-auto_identifiers",
     HTML: "html",
 };
 
@@ -68,6 +68,15 @@ async function setState(newState) {
 
     for (const name of fileNames) {
         try {
+            console.log({
+                from: fromFormat,
+                to: toFormat,
+                "output-file": "output.txt",
+                "resource-path": ["."],
+            });
+
+            console.log(fileStore[name]);
+
             const result = await window.pandocModule.convert(
                 {
                     from: fromFormat,
