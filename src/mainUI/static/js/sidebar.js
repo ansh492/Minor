@@ -53,9 +53,6 @@ class SidebarManager {
         // Show container
         this.sidebarContainer.classList.remove("hidden");
         this.currentSidebar = sidebarId;
-
-        // Trigger sidebar-specific render
-        // this.renderCurrentSidebar();
     }
 
     hide() {
@@ -76,13 +73,13 @@ class SidebarManager {
         return this.sidebarContainer.classList.contains("hidden");
     }
 
-    renderCurrentSidebar() {
-        if (this.currentSidebar === "files") {
-            renderFilesSidebar();
-        } else if (this.currentSidebar === "errors") {
-            renderErrorsSidebar();
-        }
-    }
+    // renderCurrentSidebar() {
+    //     // if (this.currentSidebar === "files") {
+    //     //     renderFilesSidebar();
+    //     // } else if (this.currentSidebar === "errors") {
+    //     //     renderErrorsSidebar();
+    //     // }
+    // }
 }
 
 // Initialize sidebar manager

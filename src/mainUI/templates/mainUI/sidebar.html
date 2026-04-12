@@ -1,4 +1,62 @@
 <style>
+    .outline-container {
+        font-size: 14px;
+    }
+
+    .outline-item {
+        margin: 4px 0;
+    }
+
+    .outline-summary {
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        list-style: none;
+    }
+
+    .outline-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .outline-arrow {
+        display: inline-block;
+        font-size: 12px;
+        transition: transform 0.2s ease;
+        color: #6b7280;
+    }
+
+    details[open] .outline-arrow {
+        transform: rotate(90deg);
+    }
+
+    .outline-summary:hover {
+        background-color: #e0e7ff;
+        color: #1e40af;
+    }
+
+    .outline-summary:hover .outline-arrow {
+        color: #1e40af;
+    }
+
+    .outline-text {
+        flex: 1;
+    }
+
+    .outline-content {
+        margin-left: 24px;
+        padding-left: 8px;
+        border-left: 2px solid #e5e7eb;
+    }
+
+    details[open] > .outline-summary {
+        margin-bottom: 8px;
+    }
+
     /* Additional custom styles to complement Tachyons */
     .sidebar-toggle-btn {
         background: var(--button-group-bg);
@@ -117,6 +175,13 @@
         >
             ⚠️
         </button>
+        <button
+            class="sidebar-toggle-btn ma1 pa2 br2"
+            data-sidebar="outline"
+            title="Outline"
+        >
+            ✏️
+        </button>
     </div>
 
     <div class="sidebar-container relative h-100">
@@ -135,10 +200,28 @@
             <div class="sidebar-header">
                 <span class="sidebar-title">Errors</span>
             </div>
-            <div id="sidebar-content" class="overflow-auto flex-grow-1"></div>
+            <div
+                id="error-sidebar-content"
+                class="overflow-auto flex-grow-1"
+            ></div>
+        </div>
+
+        <div
+            id="outline-sidebar"
+            class="sidebar flex flex-column h-100 h-100vh"
+        >
+            <div class="sidebar-header">
+                <span class="sidebar-title">Outline</span>
+            </div>
+            <div
+                id="outline-sidebar-content"
+                class="overflow-auto flex-grow-1"
+            ></div>
         </div>
     </div>
 </div>
 
 <script src="static/js/sidebar.js"></script>
 <script type="module" src="static/js/files.js"></script>
+<script type="module" src="static/js/outline.js"></script>
+<script type="module" src="static/js/errors.js"></script>

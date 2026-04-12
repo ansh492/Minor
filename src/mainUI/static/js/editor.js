@@ -244,9 +244,10 @@ export const App = () => {
                 renderLeaf: (props) => React.createElement(Leaf, props),
                 // DOM event listeners
                 onKeyDown: (event) => {
-                    console.log("Key pressed:", event.key);
+                    // console.log("Key pressed:", event.key);
                     if (window.debouncedHandler)
                         window.debouncedHandler(window.editorAPI.getValue());
+                    if (window.outliner) window.outliner();
                 },
 
                 onCopy: (event) => {

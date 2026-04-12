@@ -195,10 +195,11 @@ export function renderSidebar() {
 
         // File name (click to open)
         const nameSpan = document.createElement("span");
-        nameSpan.className = "sidebar-item-name inactive-file";
+        nameSpan.className = "sidebar-item-name inactive-file h-100 w-100";
         nameSpan.textContent = name + (name === mainFile ? " ★" : "");
         nameSpan.title = "Click to open";
         nameSpan.addEventListener("click", () => switchToFile(name));
+        li.addEventListener("click", () => switchToFile(name));
         nameSpan.fileName = name;
 
         nameSpan.addEventListener("contextmenu", (e) => {
@@ -216,6 +217,7 @@ export function switchToFile(name) {
     if (window.editorAPI.getValue)
         fileStore[activeFile] = window.editorAPI.getValue();
 
+    const sidebar = document.getElementById("files-sidebar");
     const list = sidebar.querySelector(".sidebar-list");
     list.querySelectorAll(".active-file").forEach((element) => {
         element.classList.remove("active-file");

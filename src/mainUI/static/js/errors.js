@@ -11,7 +11,7 @@ function extractMessageFromBraces(inputString) {
 
 // Test
 export function RenderError(err) {
-    const sidebar = document.getElementById("sidebar-content");
+    const sidebar = document.getElementById("error-sidebar-content");
 
     const errorMessage = extractMessageFromBraces(err.toString());
     console.log(errorMessage);

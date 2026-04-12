@@ -51,9 +51,6 @@ async function setState(newState) {
     const oldState = window.currentState;
     window.currentState = newState;
     window.editorAPI.setMode(newState);
-    // Update the state indicator read by main.js / buttons.js
-    // document.getElementById("state-display").textContent = window.currentState;
-
     const fromFormat = window.formatMap[oldState];
     const toFormat = window.formatMap[newState];
 
@@ -68,15 +65,6 @@ async function setState(newState) {
 
     for (const name of fileNames) {
         try {
-            console.log({
-                from: fromFormat,
-                to: toFormat,
-                "output-file": "output.txt",
-                "resource-path": ["."],
-            });
-
-            console.log(fileStore[name]);
-
             const result = await window.pandocModule.convert(
                 {
                     from: fromFormat,
