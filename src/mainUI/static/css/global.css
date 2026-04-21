@@ -11,7 +11,16 @@
     --accent: #df53ca;
     --button-group-bg: #ffffff;
 }
+
+@font-face {
+    font-family: "Pacifico";
+    src: url("/static/Pacifico-Regular.ttf");
+}
+.Dotei {
+    font-family: "Pacifico";
+}
 body {
+    /* font-family: "Pacifico"; */
     background-color: var(--background);
 }
 .bg-selected {
