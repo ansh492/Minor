@@ -157,7 +157,7 @@ def filesList(request):
 
         # Get the file_store from user model
         file_store = user.file_store
-        print("Type filestore", type(file_store["123"]), file_store)
+        #print("Type filestore", type(file_store["123"]), file_store)
         response = [
             (i, file_store.get(i).get("project_name", "Default ID")) for i in file_store
         ]
@@ -179,7 +179,7 @@ def filesList(request):
             return JsonResponse(
                 {
                     "success": True,
-                    "project_id": projectID,
+                    #"project_id": projectID,
                     "files": [],
                     "message": "No files found for this project",
                 },
