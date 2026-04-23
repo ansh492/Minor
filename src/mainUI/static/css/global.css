@@ -68,16 +68,15 @@ body {
     border: none;
 }
 .button-selection {
-    /* display: none;  needs to be none*/
     position: absolute;
     height: 100%;
-    width: calc(var(--container_width) / 4);
+    /* Remove this line: width: calc(var(--container_width) / 4); */
     z-index: 0;
     left: 0;
     top: 0;
     background-color: var(--selection-bg);
     border-radius: 9999px;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease; /* Changed from transform to all for smooth width changes */
     pointer-events: none;
 }
 .button-group.has-selection .button-selection {
