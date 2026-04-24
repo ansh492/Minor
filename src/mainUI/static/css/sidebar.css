@@ -1,0 +1,29 @@
+ /* Sidebar Styles */
+.sidebar {
+    display: none;
+}
+.sidebar.active {
+    display: flex;
+}
+#checkboxLivePreview {
+    display: none;
+}
+.switchButton {
+    position: relative;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 50px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+#checkboxLivePreview:checked + .switchButton {
+    background-color: var(--selection-bg);
+}

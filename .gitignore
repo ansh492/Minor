@@ -1,4 +1,3 @@
-*.wasm
 *.tgz
 *.zip
 .env

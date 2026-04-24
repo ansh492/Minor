@@ -1,0 +1,70 @@
+/* Button styles */
+.bg-selected {
+    background-color: var(--selection-bg);
+}
+.button-group {
+    --container_width: 300px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+    height: 40px;
+    border-radius: 9999px;
+    background-color: var(--button-group-bg);
+    color: var(--regular-button-text);
+    width: var(--container_width);
+    overflow: hidden;
+    border: 1px solid var(--button-group-border);
+}
+.regular_button {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer; /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -1px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    transition: color 0.15s ease;
+    font-family: inherit;
+}
+.regular_button:hover {
+    background-color: var(--regular-button-hover-bg);
+}
+.selected_button {
+    color: var(--selected-button-text);
+    background: transparent;
+    border: none;
+}
+.button-selection {
+    position: absolute;
+    height: 100%;
+    /* Remove this line: width: calc(var(--container_width) / 4); */
+    z-index: 0;
+    left: 0;
+    top: 0;
+    background-color: var(--selection-bg);
+    border-radius: 9999px;
+    transition: all 0.2s ease; /* Changed from transform to all for smooth width changes */
+    pointer-events: none;
+}
+.button-group.has-selection .button-selection {
+    display: block;
+}
+.button-group[data-count="1"] .button-selection {
+    width: 100%;
+    transform: translateX(0%);
+}
+.button-group[data-count="2"] .button-selection {
+    width: 50%;
+}
+.button-group[data-count="3"] .button-selection {
+    width: calc(100% / 3);
+}
+.button-group[data-count="4"] .button-selection {
+    width: 25%;
+}

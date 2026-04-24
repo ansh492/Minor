@@ -1,3 +1,6 @@
+from random import random
+from django.shortcuts import render, redirect
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
@@ -150,7 +153,8 @@ def filesChange(request):
         status=200,
     )
 
-
+@csrf_exempt
+@login_required
 def filesList(request):
     try:
         user = request.user
@@ -191,3 +195,38 @@ def filesList(request):
         return JsonResponse(
             {"success": False, "message": f"Error fetching files: {str(e)}"}, status=500
         )
+    
+
+@csrf_exempt
+@login_required   
+def createProject(request, project_name):
+    try:
+        import random
+        hash = random.getrandbits(128)
+        user = request.user
+        file_store = user.file_store
+        welcome_strings =["HOIIHI", "BLEHH", "KONICHIWAAA", "ANNEYEONGHASEYOO"]
+        file_store[str(hash)] = {
+            "project_name": project_name,
+            "main_file": "main.typ",
+            "files": {"main.typ": random.choice(welcome_strings)},
+        }
+        user.file_store = file_store
+        user.save()
+        return JsonResponse(
+            {
+                "success": True,
+                "message": f"Project '{project_name}' created successfully with ID {hash}",
+                "project_id": str(hash),
+            },
+            status=201,
+        )
+
+    except Exception as e:
+        print(e)
+        return JsonResponse(
+            {"success": False, "message": f"Error creating project_file: {str(e)}"}, status=500
+        )
+
+
+

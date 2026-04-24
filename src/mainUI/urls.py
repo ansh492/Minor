@@ -21,4 +21,5 @@ urlpatterns = [
     path("api/filesChange", api.filesChange),
     path("api/filesList", api.filesList),
     path("", views.homepage),
+    path("api/createProject/<str:project_name>", api.createProject),
 ]
